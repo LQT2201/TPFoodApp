@@ -6,10 +6,13 @@ import Animated, { FadeInDown, FadeIn } from 'react-native-reanimated';
 import { Ionicons } from '@expo/vector-icons';
 import CommentScreen from '../comment/Comment';
 
+
+
+
 export default function RecipeDetailScreen(props) {
 
     let item = props.route.params;
-    
+
     const ingredients = [];
     const steps = [];
     const [isFavourite, setIsFavourite] = useState(false);
@@ -229,7 +232,8 @@ export default function RecipeDetailScreen(props) {
                 <View style={{borderBottomColor: 'gray',borderBottomWidth: 1,marginVertical: 8, margin:10}}></View>
                         
                 <View style = {{margin: 10}}>
-                    <TouchableOpacity onPress={() => navigation.navigate('CommentScreen')} 
+                    
+                    <TouchableOpacity onPress={() => navigation.navigate('CommentScreen',[item.idMeal])} 
                     style ={{display:'flex', flexDirection:'row', marginBottom: 20}}>
                         <Ionicons size={20} strokeWidth={5} color="#fbbf24" name="people-circle"></Ionicons>
                         <Text style={{color:'gray', fontSize:15, marginLeft: 10}}>Bình luận</Text>
@@ -244,7 +248,7 @@ export default function RecipeDetailScreen(props) {
                         display:'flex',
                         flexDirection:'row'}} 
                 
-                    onPress={() => navigation.navigate('CommentScreen',[...item])}>
+                    onPress={() => navigation.navigate('CommentScreen')}>
                         <Ionicons name='person-outline' size={20} strokeWidth={5} color={isFavourite ? "red" : "gray"}  ></Ionicons>
                         <Text style ={{marginLeft: 10}}>Press Here</Text>
                     </TouchableOpacity>

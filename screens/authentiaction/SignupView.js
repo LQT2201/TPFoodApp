@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, ImageBackground,Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { app } from '../../firebase';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { app,auth } from '../../firebase';
 
 const SignupView = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const signUp = () => {
-    const auth = getAuth();
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {

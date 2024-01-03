@@ -1,8 +1,8 @@
 import React, { useContext, useEffect,useState } from 'react';
 import { Button, View, SafeAreaView, Image, Text, StyleSheet, TextInput, TouchableOpacity, Dimensions, ImageBackground } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { app } from '../../firebase';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { app, auth } from '../../firebase';
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 
 const LoginView = ( {navigation} ) => {
@@ -14,12 +14,12 @@ const LoginView = ( {navigation} ) => {
     }
 
     const signIn = ()  => {
-        const auth = getAuth();
+        
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            navigation.navigate('Home');
+            navigation.navigate('Bottom');
         })
         .catch((error) => {
             const errorCode = error.code;

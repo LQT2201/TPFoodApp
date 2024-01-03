@@ -6,6 +6,7 @@ import Recipes from '../../components/Reusable/Recipes';
 import axios from 'axios';
 import {getDocs,app,db,collection,query, where} from '../../firebase'
 
+
 const Home = () => {
     const [activeCategory, setActiveCategory] = useState('beef');
     const [categories, setCategories] = useState([]);
@@ -59,8 +60,7 @@ const Home = () => {
         // Lọc danh sách công thức nấu ăn dựa trên nội dung tìm kiếm
         const filteredMeals = meals.filter(meal => meal.strMeal.toLowerCase().includes(searchQuery.toLowerCase()));
         setMeals(filteredMeals);
-        console.log("filtefsaf",filteredMeals);
-        console.log("safsd",meals);   
+
     };
 
 
